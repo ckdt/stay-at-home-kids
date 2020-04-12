@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import logo from './assets/images/logo.svg';
+import './assets/css/reset.css';
+import './assets/css/typography.css';
 import './assets/css/main.css';
 import data from './data/index';
 import List from './components/List';
+import Cards from './components/Cards';
 
 const App = () => {
   const [appData, setAppData] = useState(null);
@@ -14,21 +17,12 @@ const App = () => {
 
   return (
     <div className="App">
-      <List data={appData} />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="header">
+        <img src={logo} className="logo" alt="logo" />
       </header>
+      <div className="content">
+        <Cards data={appData} />
+      </div>
     </div>
   );
 };

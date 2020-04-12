@@ -1,17 +1,153 @@
+/* Variables */
+:root {
+  --color-one: #FE5C2B;
+  --color-two: #FF8FE9;
+  --color-three: #584CFF;
+  --color-four: #FFF031;
+  --color-dark: #070069;
+  --color-light: #EBEAFF;
+  --base-size: 16px;
+  --base-padding: 32px;
+  --font-heading: 'MADE Dillan';
+  --font-body: 'Apfel Grotezk';
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-four);
+  color: var(--color-one);
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: var(--base-size);
+  line-height: 1.2;
+  background-color: var(--color-one);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: var(--base-size);
 }
 
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+.header {
+  position: relative;
+  height: 100px;
+}
+
+.logo {
+  position: absolute;
+  top: 2em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cards {
+  padding: 1em;
+}
+
+.card {
+  position: relative;
+  padding: 1em 0;
+  margin: 1em 0;
+  min-height: 250px;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.card--foreground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 8;
+}
+
+.card::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(3*var(--base-size));
+}
+
+.card:nth-child(1)::before {
+  transform: rotate(2deg);
+  background-color: var(--color-three);
+}
+
+.card:nth-child(1) a {
+  color: var(--color-two);
+}
+
+.card:nth-child(2)::before {
+  transform: rotate(-1deg);
+  background-color: var(--color-two);
+}
+
+.card:nth-child(2) a {
+  color: var(--color-dark);
+}
+
+.card:nth-child(2) .body--title {
+  color: var(--color-three);
+}
+
+.card:nth-child(3)::before {
+  transform: rotate(-2deg);
+  background-color: var(--color-four);
+}
+
+.card:nth-child(3) .body--title {
+  color: var(--color-one);
+}
+
+
+.card--header {}
+
+.header--title {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  padding: 1em 0 0.5em 0;
+  margin: 0;
+}
+
+.card--body {}
+
+.body--title {
+  font-size: 2.75rem;
+  font-family: var(--font-heading), Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+  line-height: 1.0;
+  letter-spacing: 0.025rem;
+  padding: 0;
+  margin: 0;
+  color: var(--color-four);
+}
+
+.card--footer {}
+
+.card--footer p {
+  padding-top: 0.5em;
+}
+
+/*
 
 .App {
   text-align: center;
@@ -52,3 +188,5 @@ code {
     transform: rotate(360deg);
   }
 }
+
+*/

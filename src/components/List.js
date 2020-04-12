@@ -15,7 +15,7 @@ const List = ({data}) => {
       const {url, title} = item;
       return (
         <li key={index}>
-          <a href={url} target="_blank">
+          <a href={url} target="_blank" rel="noopener noreferrer">
             {title}
           </a>
         </li>

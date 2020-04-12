@@ -1,0 +1,17 @@
+/* Heading */
+@font-face {
+  font-family: 'MADE Dillan';
+  src: url('../fonts/MADEDillan.woff2') format('woff2'),
+    url('../fonts/MADEDillan.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Body */
+@font-face {
+  font-family: 'Apfel Grotezk';
+  src: url('../fonts/ApfelGrotezk-Regular.woff2') format('woff2'),
+    url('../fonts/ApfelGrotezk-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
