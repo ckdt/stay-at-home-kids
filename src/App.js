@@ -1,10 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import logo from './assets/images/logo.svg';
+import './assets/css/main.css';
+import data from './data/index';
+import List from './components/List';
 
-function App() {
+const App = () => {
+  const [appData, setAppData] = useState(null);
+
+  useEffect(() => {
+    console.log(data);
+    setAppData(data);
+  }, [data]);
+
   return (
     <div className="App">
+      <List data={appData} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -21,6 +31,6 @@ function App() {
       </header>
     </div>
   );
-}
+};
 
 export default App;
