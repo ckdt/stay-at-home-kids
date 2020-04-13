@@ -1,11 +1,11 @@
 /* Variables */
 :root {
-  --color-one: #FE5C2B;
-  --color-two: #FF8FE9;
-  --color-three: #584CFF;
-  --color-four: #FFF031;
+  --color-one: #fe5c2b;
+  --color-two: #ff8fe9;
+  --color-three: #584cff;
+  --color-four: #fff031;
   --color-dark: #070069;
-  --color-light: #EBEAFF;
+  --color-light: #ebeaff;
   --base-size: 16px;
   --base-padding: 32px;
   --font-heading: 'MADE Dillan';
@@ -19,7 +19,8 @@
 }
 
 body {
-  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: var(--base-size);
   line-height: 1.2;
   background-color: var(--color-one);
@@ -66,61 +67,61 @@ a:active {
   position: relative;
   padding: 1em 0;
   margin: 1em 0;
-  min-height: 250px;
+  min-height: 300px;
   text-align: center;
   font-size: 1.25rem;
 }
 
 .card--foreground {
   position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
   height: 100%;
   z-index: 8;
 }
 
 .card::before {
-  content: " ";
+  content: ' ';
   display: block;
   position: absolute;
   z-index: 4;
   width: 100%;
   height: 100%;
-  border-radius: calc(3*var(--base-size));
-}
-
-.card:nth-child(1)::before {
   transform: rotate(2deg);
+  border-radius: calc(3 * var(--base-size));
   background-color: var(--color-three);
 }
 
-.card:nth-child(1) a {
+.card a {
   color: var(--color-two);
 }
 
-.card:nth-child(2)::before {
+.card:nth-child(2n)::before {
   transform: rotate(-1deg);
   background-color: var(--color-two);
 }
 
-.card:nth-child(2) a {
+.card:nth-child(2n) a,
+.card:nth-child(3n) a {
   color: var(--color-dark);
 }
 
-.card:nth-child(2) .body--title {
-  color: var(--color-three);
-}
-
-.card:nth-child(3)::before {
+.card:nth-child(3n)::before {
   transform: rotate(-2deg);
   background-color: var(--color-four);
 }
 
-.card:nth-child(3) .body--title {
+.card:nth-child(3n) .body--title {
   color: var(--color-one);
 }
 
-
-.card--header {}
+.card--header {
+}
 
 .header--title {
   font-size: 1.25rem;
@@ -129,64 +130,23 @@ a:active {
   margin: 0;
 }
 
-.card--body {}
+.card--body {
+}
 
 .body--title {
-  font-size: 2.75rem;
-  font-family: var(--font-heading), Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
-  line-height: 1.0;
+  font-size: 2.5rem;
+  font-family: var(--font-heading), Cambria, 'Hoefler Text', Utopia, 'Liberation Serif',
+    'Nimbus Roman No9 L Regular', Times, 'Times New Roman', serif;
+  line-height: 1;
   letter-spacing: 0.025rem;
   padding: 0;
   margin: 0;
   color: var(--color-four);
 }
 
-.card--footer {}
+.card--footer {
+}
 
 .card--footer p {
   padding-top: 0.5em;
 }
-
-/*
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-*/

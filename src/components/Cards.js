@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 
 const Cards = ({data}) => {
   const [isLoaded, setIsLoaded] = useState(false);

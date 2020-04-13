@@ -4,16 +4,42 @@ import './assets/css/reset.css';
 import './assets/css/typography.css';
 import './assets/css/main.css';
 import data from './data/index';
-import List from './components/List';
+//import List from './components/List';
 import Cards from './components/Cards';
+import Airtable from 'airtable';
+const base = new Airtable({apiKey: 'keyoOQCAKm3JPcYMp'}).base('appoRZTZkSI0ga1wO');
 
 const App = () => {
-  const [appData, setAppData] = useState(null);
+  // useEffect(() => {
+  //   console.log(data);
+  //   setAppData(data);
+  // }, [data]);
 
+  const [appData, setAppData] = useState([]);
   useEffect(() => {
-    console.log(data);
-    setAppData(data);
-  }, [data]);
+    base('Content')
+      .select({
+        view: 'Grid view',
+      })
+      .firstPage(function (err, records) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+
+        const tmpAppData = [];
+
+        records.forEach(function (record) {
+          tmpAppData.push({
+            title: record.get('Title'),
+            source: record.get('Source'),
+            ages: record.get('Ages'),
+          });
+          console.log('Retrieved', record.get('Title'));
+        });
+        setAppData(tmpAppData);
+      });
+  }, [base]);
 
   return (
     <div className="App">
