@@ -7,10 +7,22 @@ import data from './data/index';
 //import List from './components/List';
 import Cards from './components/Cards';
 import Airtable from 'airtable';
+import ReactGA from 'react-ga';
+
 const base = new Airtable({apiKey: 'keyoOQCAKm3JPcYMp'}).base('appoRZTZkSI0ga1wO');
 
 const App = () => {
   const [appData, setAppData] = useState([]);
+
+  // const googleAnalytics = () => {
+  ReactGA.initialize('UA-163473118-1', {
+    gaOptions: {
+      anonymizeIp: true,
+    },
+  });
+  ReactGA.pageview('/home');
+  // };
+
   useEffect(() => {
     base('Content')
       .select({
