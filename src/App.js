@@ -10,11 +10,6 @@ import Airtable from 'airtable';
 const base = new Airtable({apiKey: 'keyoOQCAKm3JPcYMp'}).base('appoRZTZkSI0ga1wO');
 
 const App = () => {
-  // useEffect(() => {
-  //   console.log(data);
-  //   setAppData(data);
-  // }, [data]);
-
   const [appData, setAppData] = useState([]);
   useEffect(() => {
     base('Content')
@@ -33,6 +28,7 @@ const App = () => {
           tmpAppData.push({
             title: record.get('Title'),
             source: record.get('Source'),
+            url: record.get('URL'),
             ages: record.get('Ages'),
           });
           console.log('Retrieved', record.get('Title'));
