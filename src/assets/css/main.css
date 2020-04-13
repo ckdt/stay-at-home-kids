@@ -49,7 +49,7 @@ a:active {
 
 .header {
   position: relative;
-  height: 100px;
+  height: 140px;
 }
 
 .logo {
@@ -60,9 +60,131 @@ a:active {
 }
 
 .cards {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
   padding: 1em;
 }
 
+/* First: default */
+.card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--color-three);
+  text-align: center;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: calc(2 * var(--base-size));
+  color: var(--color-two);
+  transform: rotate(-2deg);
+  transition: 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+.card--foreground {
+  transform: rotate(2deg);
+  transition: 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+.card:hover {
+  transform: rotate(2deg) scale(1.1);
+  transition: transform 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+.card:hover .card--foreground {
+  transform: rotate(-2deg) scale(0.95);
+  transition: transform 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+/* Second */
+.card:nth-child(3n-1) {
+  /*pink*/
+  background-color: var(--color-two);
+  transform: rotate(2deg);
+}
+
+.card:nth-child(3n-1) .card--foreground {
+  transform: rotate(-2deg);
+  transition: 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+.card:nth-child(3n-1):hover {
+  transform: rotate(-2deg) scale(1.1);
+  transition: transform 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+.card:nth-child(3n-1):hover .card--foreground {
+  transform: rotate(2deg) scale(0.95);
+  transition: transform 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+/* Third */
+.card:nth-child(3n) {
+  /*yellow*/
+  background-color: var(--color-four);
+  transform: rotate(-1deg);
+}
+
+.card:nth-child(3n) .card--foreground {
+  transform: rotate(1deg);
+  transition: 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+.card:nth-child(3n):hover {
+  transform: rotate(1deg) scale(1.1);
+  transition: transform 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+.card:nth-child(3n):hover .card--foreground {
+  transform: rotate(-1deg) scale(0.95);
+  transition: transform 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+
+.body--title {
+  font-size: 2.5rem;
+  font-family: var(--font-heading), Cambria, 'Hoefler Text', Utopia, 'Liberation Serif',
+    'Nimbus Roman No9 L Regular', Times, 'Times New Roman', serif;
+  line-height: 1;
+  letter-spacing: 0.025rem;
+  padding: 0;
+  margin: 0;
+  color: var(--color-four);
+}
+
+.card:nth-child(3n) .body--title {
+  color: var(--color-one);
+}
+
+.card a {
+  color: var(--color-two);
+}
+
+.card:nth-child(3n-1) a,
+.card:nth-child(3n) a {
+  color: var(--color-dark);
+}
+
+
+@media (min-width: 940px) {
+  .logo {
+    position: fixed;
+  }
+
+  .cards {
+    flex-direction: row;
+  }
+
+  .card {
+    min-width: 25%;
+    margin-left: 1em;
+    margin-bottom: 0;
+  }
+}
+
+/* 
 .card {
   position: relative;
   padding: 1em 0;
@@ -149,4 +271,4 @@ a:active {
 
 .card--footer p {
   padding-top: 0.5em;
-}
+} */
