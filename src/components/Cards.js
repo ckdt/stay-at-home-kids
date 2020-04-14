@@ -19,7 +19,17 @@ const Cards = ({data}) => {
 
   if (isLoaded) {
     const items = data.map((item, index) => {
-      const {url, title, source, ages} = item;
+      const {url, title, source, ages, lang} = item;
+
+      const langItems = lang.map(function (item, index) {
+        return (
+          <li className="tag tag__lang" key="index">
+            {' '}
+            {item}{' '}
+          </li>
+        );
+      });
+
       return (
         <div className="card" key={index}>
           <ReactGA.OutboundLink eventLabel={title} to={url} target="_blank" trackerNames={[source]}>
@@ -31,7 +41,10 @@ const Cards = ({data}) => {
                 <h2 className="body--title">{title}</h2>
               </div>
               <div className="card--footer">
-                <p>ages: {ages}</p>
+                <ul className="tags">
+                  <li className="tag">{ages}</li>
+                  {langItems}
+                </ul>
               </div>
             </div>
             <div className="card--background">&nbsp;</div>

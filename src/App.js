@@ -43,6 +43,7 @@ const App = () => {
               source: record.get('Source'),
               url: record.get('URL'),
               ages: record.get('Ages'),
+              lang: record.get('Language'),
             });
           }
         });
