@@ -42,12 +42,12 @@ const Menu = () => {
               <h1 className="menu--title">Stay At Home Kids?</h1>
               <p>
                 Yes! Kids, please stay at home. Here are some links with fun activities you can do.
-                Please #stayhome #staysafe
+                Please #stayhome #staysafe #stayathomekids
               </p>
 
-              <h2 className="menu--title">About this site</h2>
+              <h2 className="menu--title">About</h2>
               <p>
-                This site was made by{' '}
+                This site is made by{' '}
                 <ReactGA.OutboundLink
                   eventLabel="Ronny Wieckardt"
                   to="https://ronnywieckardt.nl"
@@ -63,8 +63,8 @@ const Menu = () => {
                 >
                   ALL THIS
                 </ReactGA.OutboundLink>{' '}
-                and a Dad of 2 awesome kids (age 2 and 7). I felt the need to share some fun
-                activities parents could do with their kids in these weird times. So I turned it
+                and a Dad of two awesome kids (age 2 and 7). I felt the need to share some fun
+                activities parents could do with their kids during these weird times. So I turned it
                 into a sideproject.{' '}
               </p>
 
