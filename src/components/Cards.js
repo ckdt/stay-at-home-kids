@@ -1,7 +1,14 @@
 import React, {useState, useEffect, useRef} from 'react';
+import ReactGA from 'react-ga';
 
 const Cards = ({data}) => {
   const [isLoaded, setIsLoaded] = useState(false);
+
+  ReactGA.initialize('UA-163473118-1', {
+    gaOptions: {
+      anonymizeIp: true,
+    },
+  });
 
   useEffect(() => {
     if (data) {
@@ -15,7 +22,7 @@ const Cards = ({data}) => {
       const {url, title, source, ages} = item;
       return (
         <div className="card" key={index}>
-          <a href={url} target="_blank" rel="noopener noreferrer">
+          <ReactGA.OutboundLink eventLabel={title} to={url} target="_blank" trackerNames={[source]}>
             <div className="card--foreground">
               <div className="card--header">
                 <h3 className="header--title">{source}</h3>
@@ -28,7 +35,7 @@ const Cards = ({data}) => {
               </div>
             </div>
             <div className="card--background">&nbsp;</div>
-          </a>
+          </ReactGA.OutboundLink>
         </div>
       );
     });

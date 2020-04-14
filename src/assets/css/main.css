@@ -61,8 +61,8 @@ a:active {
 
 .cards {
   display: flex;
-  flex-direction: column;
-  align-items: space-between;
+  flex-wrap: wrap;
+  align-items: space-around;
   padding: 1em;
 }
 
@@ -76,7 +76,7 @@ a:active {
   background: var(--color-three);
   text-align: center;
   padding: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 3%;
   border-radius: calc(2 * var(--base-size));
   color: var(--color-two);
   transform: rotate(-2deg);
@@ -142,14 +142,13 @@ a:active {
   transition: transform 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
 }
 
-
 .body--title {
   font-size: 2.5rem;
   font-family: var(--font-heading), Cambria, 'Hoefler Text', Utopia, 'Liberation Serif',
     'Nimbus Roman No9 L Regular', Times, 'Times New Roman', serif;
   line-height: 1;
   letter-spacing: 0.025rem;
-  padding: 0;
+  padding: 0.25em 0;
   margin: 0;
   color: var(--color-four);
 }
@@ -167,7 +166,6 @@ a:active {
   color: var(--color-dark);
 }
 
-
 @media (min-width: 940px) {
   .logo {
     position: fixed;
@@ -178,97 +176,14 @@ a:active {
   }
 
   .card {
-    min-width: 25%;
     margin-left: 1em;
-    margin-bottom: 0;
+    margin-bottom: 2em;
   }
 }
 
-/* 
-.card {
-  position: relative;
-  padding: 1em 0;
-  margin: 1em 0;
-  min-height: 300px;
-  text-align: center;
-  font-size: 1.25rem;
+@media (min-width: 1280px) {
+  .cards {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 }
-
-.card--foreground {
-  position: absolute;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  height: 100%;
-  z-index: 8;
-}
-
-.card::before {
-  content: ' ';
-  display: block;
-  position: absolute;
-  z-index: 4;
-  width: 100%;
-  height: 100%;
-  transform: rotate(2deg);
-  border-radius: calc(3 * var(--base-size));
-  background-color: var(--color-three);
-}
-
-.card a {
-  color: var(--color-two);
-}
-
-.card:nth-child(2n)::before {
-  transform: rotate(-1deg);
-  background-color: var(--color-two);
-}
-
-.card:nth-child(2n) a,
-.card:nth-child(3n) a {
-  color: var(--color-dark);
-}
-
-.card:nth-child(3n)::before {
-  transform: rotate(-2deg);
-  background-color: var(--color-four);
-}
-
-.card:nth-child(3n) .body--title {
-  color: var(--color-one);
-}
-
-.card--header {
-}
-
-.header--title {
-  font-size: 1.25rem;
-  line-height: 1.2;
-  padding: 1em 0 0.5em 0;
-  margin: 0;
-}
-
-.card--body {
-}
-
-.body--title {
-  font-size: 2.5rem;
-  font-family: var(--font-heading), Cambria, 'Hoefler Text', Utopia, 'Liberation Serif',
-    'Nimbus Roman No9 L Regular', Times, 'Times New Roman', serif;
-  line-height: 1;
-  letter-spacing: 0.025rem;
-  padding: 0;
-  margin: 0;
-  color: var(--color-four);
-}
-
-.card--footer {
-}
-
-.card--footer p {
-  padding-top: 0.5em;
-} */

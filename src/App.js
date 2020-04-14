@@ -37,14 +37,17 @@ const App = () => {
         const tmpAppData = [];
 
         records.forEach(function (record) {
-          tmpAppData.push({
-            title: record.get('Title'),
-            source: record.get('Source'),
-            url: record.get('URL'),
-            ages: record.get('Ages'),
-          });
-          console.log('Retrieved', record.get('Title'));
+          const published = record.get('Published');
+          if (published) {
+            tmpAppData.push({
+              title: record.get('Title'),
+              source: record.get('Source'),
+              url: record.get('URL'),
+              ages: record.get('Ages'),
+            });
+          }
         });
+        tmpAppData.reverse();
         setAppData(tmpAppData);
       });
   }, [base]);
