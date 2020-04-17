@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactGA from 'react-ga';
 
 const Cards = ({data}) => {
@@ -21,11 +21,10 @@ const Cards = ({data}) => {
     const items = data.map((item, index) => {
       const {url, title, source, ages, lang} = item;
 
-      const langItems = lang.map(function (item, index) {
+      const langItems = lang.map(function (item, n) {
         return (
-          <li className="tag tag__lang" key="index">
-            {' '}
-            {item}{' '}
+          <li className="tag tag__lang" key={`lang_${n}`}>
+            {item}
           </li>
         );
       });

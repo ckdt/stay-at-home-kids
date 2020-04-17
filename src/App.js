@@ -3,7 +3,6 @@ import logo from './assets/images/logo.svg';
 import './assets/css/reset.css';
 import './assets/css/typography.css';
 import './assets/css/main.css';
-import data from './data/index';
 //import List from './components/List';
 import Cards from './components/Cards';
 import Menu from './components/Menu';
@@ -50,7 +49,7 @@ const App = () => {
         tmpAppData.reverse();
         setAppData(tmpAppData);
       });
-  }, [base]);
+  }, []);
 
   return (
     <div className="App">
@@ -60,6 +59,16 @@ const App = () => {
       </header>
       <div className="content">
         <Cards data={appData} />
+      </div>
+      <div className="footer">
+        <ReactGA.OutboundLink
+          eventLabel="submit yours"
+          to="https://airtable.com/shreSbjnmSE8qd5zI"
+          target="_blank"
+          className="submit--button"
+        >
+          submit
+        </ReactGA.OutboundLink>
       </div>
     </div>
   );
