@@ -78,18 +78,28 @@ a:active {
   0% {
     -webkit-transform: rotate(0deg);
   }
+
   2% {
     -webkit-transform: rotate(-6deg);
   }
+
   5% {
     -webkit-transform: rotate(6deg);
   }
+
   10% {
     -webkit-transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(0deg);
   }
+}
+
+.footer--note {
+  text-align: center;
+  padding: 2em 1em;
+  color: var(--color-dark);
 }
 
 .logo {
@@ -297,25 +307,25 @@ a:active {
 }
 
 /* Burger animation after checked */
-.burger:checked + .burger--toggle .burger--icon {
+.burger:checked+.burger--toggle .burger--icon {
   transition-delay: 0s;
 }
 
-.burgerchecked + .burger--toggle .burger--icon:before,
-.burger:checked + .burger--toggle .burger--icon:after {
+.burgerchecked+.burger--toggle .burger--icon:before,
+.burger:checked+.burger--toggle .burger--icon:after {
   transition-delay: 0.025s;
 }
 
-.burger:checked + .burger--toggle .burger--icon:before {
+.burger:checked+.burger--toggle .burger--icon:before {
   transform: translateY(4px) rotate(135deg);
   border-color: var(--color-two);
 }
 
-.burger:checked + .burger--toggle .burger--icon {
+.burger:checked+.burger--toggle .burger--icon {
   border-color: transparent;
 }
 
-.burger:checked + .burger--toggle .burger--icon:after {
+.burger:checked+.burger--toggle .burger--icon:after {
   transform: translateY(-8px) rotate(-135deg);
   border-color: var(--color-two);
 }

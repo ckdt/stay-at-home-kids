@@ -69,6 +69,8 @@ const App = () => {
         >
           submit
         </ReactGA.OutboundLink>
+
+        <p className="footer--note">All activities &copy; of their respective owners.</p>
       </div>
     </div>
   );
