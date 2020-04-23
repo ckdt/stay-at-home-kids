@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import ReactGA from 'react-ga';
+import {Link, useRouteMatch, useParams} from 'react-router-dom';
 
 const Menu = () => {
   const [menuIsOpen, SetMenuIsOpen] = useState(false);
@@ -110,3 +111,19 @@ const Menu = () => {
 };
 
 export default Menu;
+
+{
+  /* <nav>
+<ul>
+  <li>
+    <Link to="/">Home</Link>
+  </li>
+  <li>
+    <Link to="/about">About</Link>
+  </li>
+  <li>
+    <Link to="/users">Users</Link>
+  </li>
+</ul>
+</nav> */
+}

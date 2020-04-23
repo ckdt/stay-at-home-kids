@@ -1,30 +1,84 @@
 import React, {useEffect, useState} from 'react';
-import logo from './assets/images/logo.svg';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './assets/css/reset.css';
 import './assets/css/typography.css';
 import './assets/css/main.css';
-//import List from './components/List';
-import Cards from './components/Cards';
-import Menu from './components/Menu';
 import Airtable from 'airtable';
-import ReactGA from 'react-ga';
+
+import Home from './views/home';
 
 const base = new Airtable({apiKey: 'keyoOQCAKm3JPcYMp'}).base('appoRZTZkSI0ga1wO');
 
 const App = () => {
+  const [appIsLoaded, setAppIsLoaded] = useState(false);
+  const [initData, setInitData] = useState([]);
   const [appData, setAppData] = useState([]);
+  const [appCategories, setAppCategories] = useState([]);
+  const [activeCategories, setActiveCategories] = useState([]);
 
-  ReactGA.initialize('UA-163473118-1', {
-    gaOptions: {
-      anonymizeIp: true,
-    },
-  });
-  ReactGA.pageview('/home');
+  const handleHomeClick = () => {
+    console.log('Home');
+    setAppData(initData);
+  };
+
+  const filterData = (activeCategories) => {
+    console.log('filter');
+    setAppIsLoaded(false);
+    if (activeCategories && activeCategories.length > 0) {
+      console.log('inside');
+
+      const results = appData.filter((e) => activeCategories.includes(e.category));
+
+      if (results) {
+        setAppData(results);
+        console.log(results);
+      } else {
+        console.error('no matches');
+        return;
+      }
+    } else {
+      setAppData(initData);
+    }
+  };
+
+  // const [appFormula, setAppFormula] = useState('IF(({Published} = 1), "true")');
+
+  // useEffect(() => {
+  //   if (activeCategories.length > 0) {
+  //     const activeItems = activeCategories.map(function (item, n) {
+  //       return `{Category} = \"${item}\"`;
+  //     });
+  //     console.log('OR(' + activeItems + ')');
+
+  //     setAppFormula('IF(AND({Published} = 1, OR(' + activeItems + ')), "true")');
+
+  //     filterData(activeCategories);
+  //   }
+  // }, [activeCategories]);
+
+  // const filterData = ({activeCategories = []}) => {
+  //   const tmpData = appData;
+  //   if (activeCategories.length > 0) {
+  //     const activeItems = activeCategories.map(function (item, n) {
+  //       tmpData = appData.find((x) => x.category === item);
+  //       console.log('found', tmpData);
+  //     });
+  //   }
+  // };
+
+  //const theFormula = 'IF(({Published} = 1), "true")';
+
+  /* gonna filter this*/
+  // filterByFormula:
+  //   'IF(AND({Published} = 1, OR({Category} = "Arts & Crafts", {Category} = "Mindfullness" )), "true")',
 
   useEffect(() => {
+    // Load the "Content" sheet data from Airtable
     base('Content')
       .select({
         view: 'Grid view',
+        sort: [{field: 'Date', direction: 'desc'}],
+        filterByFormula: 'IF(({Published} = 1), "true")',
       })
       .firstPage(function (err, records) {
         if (err) {
@@ -32,47 +86,52 @@ const App = () => {
           return;
         }
 
+        // Fetch Categories records and All data in separate arrays.
+        const tmpCategories = [];
         const tmpAppData = [];
 
         records.forEach(function (record) {
-          const published = record.get('Published');
-          if (published) {
-            tmpAppData.push({
-              title: record.get('Title'),
-              source: record.get('Source'),
-              url: record.get('URL'),
-              ages: record.get('Ages'),
-              lang: record.get('Language'),
-            });
-          }
+          // Push Categories
+          tmpCategories.push(record.get('Category'));
+
+          // Push Data
+          tmpAppData.push({
+            title: record.get('Title'),
+            source: record.get('Source'),
+            url: record.get('URL'),
+            ages: record.get('Ages'),
+            lang: record.get('Language'),
+            category: record.get('Category'),
+          });
         });
-        tmpAppData.reverse();
+
+        setAppCategories(Array.from(new Set(tmpCategories)));
+        setInitData(tmpAppData); // inital data, to restore to.
         setAppData(tmpAppData);
       });
   }, []);
 
-  return (
-    <div className="App">
-      <header className="header">
-        <img src={logo} className="logo" alt="logo" />
-        <Menu />
-      </header>
-      <div className="content">
-        <Cards data={appData} />
-      </div>
-      <div className="footer">
-        <ReactGA.OutboundLink
-          eventLabel="submit yours"
-          to="https://airtable.com/shreSbjnmSE8qd5zI"
-          target="_blank"
-          className="submit--button"
-        >
-          submit
-        </ReactGA.OutboundLink>
+  useEffect(() => {
+    console.log('effect', activeCategories);
+    filterData(activeCategories);
+  }, [activeCategories]);
 
-        <p className="footer--note">All activities &copy; of their respective owners.</p>
+  return (
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/">
+            <Home
+              data={appData}
+              categories={appCategories}
+              activeCategories={activeCategories}
+              setActiveCategories={setActiveCategories}
+              handleHomeClick={handleHomeClick}
+            />
+          </Route>
+        </Switch>
       </div>
-    </div>
+    </Router>
   );
 };
 

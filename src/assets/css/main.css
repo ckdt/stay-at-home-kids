@@ -109,6 +109,57 @@ a:active {
   transform: translateX(-50%);
 }
 
+.logo:hover {
+  cursor: pointer;
+}
+
+.categories {
+  margin: 2em 1em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter--item:hover {
+  cursor: pointer;
+}
+
+.filter--item {
+  display: flex;
+  padding: 0.5em 0.5em 0.5em 1.5em;
+  margin-bottom: 0.5em;
+  border: 2px solid var(--color-two);
+  background-color: var(--color-one);
+  color: var(--color-four);
+  border-radius: 1em;
+  margin-right: 0.5em;
+}
+
+.filter--item.is-active {
+  border: 2px solid var(--color-four);
+  background-color: var(--color-four);
+  color: var(--color-one);
+}
+
+.filter--item.is-active span:after {
+  content: '×';
+  width: 1em;
+}
+
+.filter--item span {
+  white-space: nowrap;
+}
+
+.filter--item span:after {
+  display: inline-block;
+  content: '';
+  text-align: center;
+  line-height: 1em;
+  width: 1em;
+}
+
+
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -381,7 +432,7 @@ a:active {
 
 @media (min-width: 940px) {
   .logo {
-    position: fixed;
+    /* position: fixed; */
   }
 
   .cards {
