@@ -18,16 +18,14 @@ const App = () => {
 
   const handleHomeClick = () => {
     console.log('Home');
+    setActiveCategories([]);
     setAppData(initData);
   };
 
   const filterData = (activeCategories) => {
-    console.log('filter');
     setAppIsLoaded(false);
     if (activeCategories && activeCategories.length > 0) {
-      console.log('inside');
-
-      const results = appData.filter((e) => activeCategories.includes(e.category));
+      const results = initData.filter((e) => activeCategories.includes(e.category));
 
       if (results) {
         setAppData(results);
@@ -40,37 +38,6 @@ const App = () => {
       setAppData(initData);
     }
   };
-
-  // const [appFormula, setAppFormula] = useState('IF(({Published} = 1), "true")');
-
-  // useEffect(() => {
-  //   if (activeCategories.length > 0) {
-  //     const activeItems = activeCategories.map(function (item, n) {
-  //       return `{Category} = \"${item}\"`;
-  //     });
-  //     console.log('OR(' + activeItems + ')');
-
-  //     setAppFormula('IF(AND({Published} = 1, OR(' + activeItems + ')), "true")');
-
-  //     filterData(activeCategories);
-  //   }
-  // }, [activeCategories]);
-
-  // const filterData = ({activeCategories = []}) => {
-  //   const tmpData = appData;
-  //   if (activeCategories.length > 0) {
-  //     const activeItems = activeCategories.map(function (item, n) {
-  //       tmpData = appData.find((x) => x.category === item);
-  //       console.log('found', tmpData);
-  //     });
-  //   }
-  // };
-
-  //const theFormula = 'IF(({Published} = 1), "true")';
-
-  /* gonna filter this*/
-  // filterByFormula:
-  //   'IF(AND({Published} = 1, OR({Category} = "Arts & Crafts", {Category} = "Mindfullness" )), "true")',
 
   useEffect(() => {
     // Load the "Content" sheet data from Airtable
